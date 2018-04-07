@@ -132,11 +132,11 @@ router.get('/stuff', (request, response) => {
 			arr.pop();
 
 			console.log(" ");
-			console.log("My hash:     " + sha256(arr.join(',')));
+			console.log("My hash:     " + sha256(arr.join(',')).toUpperCase());
 			console.log("Client hash: " + obj.hash);
 
 			console.log("\nComparison of hashes: ");
-			if(sha256(arr.join(',')) === obj.hash) {
+			if(sha256(arr.join(',')).toUpperCase() === obj.hash) {
 				console.log('true');
 			}
 			else {
@@ -144,7 +144,7 @@ router.get('/stuff', (request, response) => {
 			}
 			parameters.dec = dec;
 
-			response.send('<style>*{margin:0;padding:0;}</style><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt21eywaiop_mdVwbORxI2G5Vj56Ev3l0&callback=initMap"></script><p id="result">Где вы живете?</p><div id="map" style="width: 100%; height: 650px;"></div><script>function initMap() {var result = document.getElementById("result");	var myLatLng = {lat: -25.363, lng: 131.044}; var map = new google.maps.Map(document.getElementById("map"), { center: myLatLng, zoom: 17 }); var infoWindow = new google.maps.InfoWindow({map: map}); if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(function(position) { var pos = { lat: ' + obj.lat + ', lng: ' + obj.lng + ' }; result.textContent = pos.lat + " x " + pos.lng; var marker = new google.maps.Marker({ position: pos || myLatLng, map: map, title: "Hello World!"});map.setCenter(pos);}, function() { handleLocationError(true, infoWindow, map.getCenter()); }); } else { handleLocationError(false, infoWindow, map.getCenter()); } } function handleLocationError(browserHasGeolocation, infoWindow, pos) { infoWindow.setPosition(pos); infoWindow.setContent(browserHasGeolocation ? "Error: The Geolocation service failed." : "Error: Your browser doesn\'t support geolocation."); }</script>');
+			response.send('<style>*{margin:0;padding:0;}</style><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt21eywaiop_mdVwbORxI2G5Vj56Ev3l0&callback=initMap"></script><p id="result">Где вы живете?</p><div id="map" style="width: 100%; height: 650px;"></div><script>function initMap() {var result = document.getElementById("result");	var myLatLng = {lat: -25.363, lng: 131.044}; var map = new google.maps.Map(document.getElementById("map"), { center: myLatLng, zoom: 17 }); var infoWindow = new google.maps.InfoWindow({map: map}); if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(function(position) { var pos = { lat:' + obj.lat + ', lng:' + obj.lng + ' }; result.textContent = pos.lat + " x " + pos.lng; var marker = new google.maps.Marker({ position: pos || myLatLng, map: map, title: "Hello World!"});map.setCenter(pos);}, function() { handleLocationError(true, infoWindow, map.getCenter()); }); } else { handleLocationError(false, infoWindow, map.getCenter()); } } function handleLocationError(browserHasGeolocation, infoWindow, pos) { infoWindow.setPosition(pos); infoWindow.setContent(browserHasGeolocation ? "Error: The Geolocation service failed." : "Error: Your browser doesn\'t support geolocation."); }</script>');
 
 			console.log("____________________________________________________________________________");
 
