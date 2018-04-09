@@ -1,4 +1,6 @@
-<h1>Instruction</h1>
+<h1>Node.js server + MongoDB with AES Encryption/Decryption</h1>
+
+<h2>Instruction</h2>
 
 <p>At the command line, write:</p>
 <p>1. npm install</p>
